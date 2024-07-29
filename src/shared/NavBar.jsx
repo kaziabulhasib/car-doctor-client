@@ -4,7 +4,7 @@ const NavBar = () => {
   const navLinks = (
     <>
       <li>
-        <Link to='/'>Home</Link>
+        <Link to='/'>Home </Link>
       </li>
       <li>
         {" "}
@@ -22,7 +22,9 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className='navbar bg-base-100'>
+    <div
+      style={{ boxShadow: "0px 2px 10px 0px rgba(0, 0, 0, 0.19)" }}
+      className='navbar bg-base-100 opacity-90  px-6 py-4 fixed  top-0 z-10 max-w-7xl mx-auto'>
       <div className='navbar-start'>
         <div className='dropdown'>
           <div tabIndex={0} role='button' className='btn btn-ghost lg:hidden'>
