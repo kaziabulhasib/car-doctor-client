@@ -5,7 +5,19 @@ const NavBar = () => {
     <>
       <li>
         <Link to='/'>Home</Link>
+      </li>
+      <li>
+        {" "}
         <Link to='/about'>About</Link>
+      </li>
+      <li>
+        <Link to='/'>Services</Link>
+      </li>
+      <li>
+        <Link to='/'>Blogs</Link>
+      </li>
+      <li>
+        <Link to='/'>Contact</Link>
       </li>
     </>
   );
@@ -75,6 +87,7 @@ const NavBar = () => {
             <span className='badge badge-xs badge-primary indicator-item'></span>
           </div>
         </button>
+        <button className='btn btn-outline  btn-error'>Appoitment</button>
       </div>
     </div>
   );
