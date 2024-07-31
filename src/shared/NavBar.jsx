@@ -19,11 +19,17 @@ const NavBar = () => {
       <li>
         <Link to='/'>Contact</Link>
       </li>
+      <li>
+        <Link to='/login'>Login</Link>
+      </li>
+      <li>
+        <Link to='/signup'>Sign Up</Link>
+      </li>
     </>
   );
   return (
     <div
-      style={{ boxShadow: "0px 2px 10px 0px rgba(0, 0, 0, 0.19)" }}
+      // style={{ boxShadow: "0px 2px 10px 0px rgba(0, 0, 0, 0.19)" }}
       className='navbar bg-base-100 opacity-90  px-24 py-4 fixed  top-0 z-10 max-w-full mx-auto h-20'>
       <div className='navbar-start'>
         <div className='dropdown'>
