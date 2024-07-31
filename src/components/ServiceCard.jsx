@@ -1,7 +1,7 @@
 const ServiceCard = ({ data }) => {
   const { title, img, price } = data;
   return (
-    <div className='card card-compact bg-base-100 w-96 shadow-xl'>
+    <div className='card card-compact bg-base-100 hover:bg-base-200   drop-shadow-xl hover:cursor-pointer rounded-lg'>
       <figure className='h-[250px]'>
         <img src={img} alt='Shoes' />
       </figure>

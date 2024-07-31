@@ -24,7 +24,7 @@ const NavBar = () => {
   return (
     <div
       style={{ boxShadow: "0px 2px 10px 0px rgba(0, 0, 0, 0.19)" }}
-      className='navbar bg-base-100 opacity-90  px-6 py-4 fixed  top-0 z-10 max-w-7xl mx-auto'>
+      className='navbar bg-base-100 opacity-90  px-24 py-4 fixed  top-0 z-10 max-w-full mx-auto h-20'>
       <div className='navbar-start'>
         <div className='dropdown'>
           <div tabIndex={0} role='button' className='btn btn-ghost lg:hidden'>
@@ -49,7 +49,7 @@ const NavBar = () => {
           </ul>
         </div>
         <Link to='/'>
-          <img src={logo} alt='' width='100px' height='54px' />
+          <img src={logo} alt='' width='72px' height='36px' />
         </Link>
       </div>
       <div className='navbar-center hidden lg:flex'>

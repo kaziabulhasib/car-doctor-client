@@ -4,8 +4,8 @@ import slide3 from "../assets/images/banner/3.jpg";
 import slide4 from "../assets/images/banner/4.jpg";
 const Banner = () => {
   return (
-    <div className='carousel w-full my-[114px] h-[600px] rounded-lg bg-gradient-to-r from-[#151515] to-[#15151500]'>
-      <div id='slide1' className='carousel-item relative w-full '>
+    <div className='carousel w-full my-[80px] h-[800px]  rounded-lg bg-gradient-to-r from-[#151515] to-[#15151500]'>
+      <div id='slide1' className='carousel-item relative w-full  '>
         <img src={slide1} className='w-full' />
 
         <div className='absolute bottom-24 left-16   gap-4 w-1/3'>
