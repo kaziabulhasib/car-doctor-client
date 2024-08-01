@@ -3,13 +3,19 @@ import ServiceCard from "./ServiceCard";
 
 const Services = () => {
   const [services, setServices] = useState([]);
-  useEffect(() => {
-    fetch("services.json")
+  const api = "http://localhost:5000/services";
+
+  const fetchData = () => {
+    fetch(api)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setServices(data);
       });
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
   return (
     <div className='my-16 '>
