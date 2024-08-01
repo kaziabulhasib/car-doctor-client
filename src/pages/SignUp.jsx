@@ -34,7 +34,7 @@ const SignUp = () => {
             </div>
           </nav>
         </div>
-        <div className='flex flex-col items-center lg:h-[36rem] lg:flex-row'>
+        <div className='flex flex-col items-center lg:h-[36rem] lg:flex-row-reverse gap-12'>
           <div className='lg:w-1/2'>
             <h2 className='text-3xl font-semibold text-gray-100 lg:text-4xl'>
               Brand
