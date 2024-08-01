@@ -12,7 +12,7 @@ const Login = () => {
     const password = form.password.value;
     const user = { email, password };
     console.log(user);
-    form.reset();
+    // form.reset();
     signIn(email, password)
       .then((result) => {
         const user = result.user;
