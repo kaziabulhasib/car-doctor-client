@@ -1,37 +1,38 @@
 import { useContext } from "react";
 import logo from "../assets/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import "./navbar.css";
 const NavBar = () => {
   const { logout, user } = useContext(AuthContext);
   const navLinks = (
     <>
-      <li>
-        <Link to='/'>Home </Link>
+      <li className='nav-link'>
+        <NavLink to='/'>Home</NavLink>
       </li>
-      <li>
+      <li className='nav-link'>
         {" "}
-        <Link to='/about'>About</Link>
+        <NavLink to='/about'>About</NavLink>
       </li>
-      <li>
+      <li className='nav-link'>
         <Link to='/'>Services</Link>
       </li>
-      <li>
-        <Link to='/'>Blogs</Link>
+      <li className='nav-link'>
+        <NavLink to='/blogs'>Blogs</NavLink>
       </li>
-      <li>
-        <Link to='/'>Contact</Link>
+      <li className='nav-link'>
+        <NavLink to='/contact'>Contact</NavLink>
       </li>
 
       {user ? (
-        <li>
+        <li className='nav-link'>
           <button onClick={() => logout()}>Logout</button>
         </li>
       ) : (
         <>
           {" "}
-          <li>
-            <Link to='/login'>Login</Link>
+          <li className='nav-link'>
+            <NavLink to='/login'>Login</NavLink>
           </li>
         </>
       )}
@@ -40,7 +41,7 @@ const NavBar = () => {
   return (
     <div
       // style={{ boxShadow: "0px 2px 10px 0px rgba(0, 0, 0, 0.19)" }}
-      className='navbar bg-base-100 opacity-90  px-24 py-4 fixed  top-0 z-10 max-w-full mx-auto h-20'>
+      className='navbar bg-base-100 opacity-90  px-24 py-4 fixed  top-0 z-10 max-w-full mx-auto h-20 mb-24'>
       <div className='navbar-start'>
         <div className='dropdown'>
           <div tabIndex={0} role='button' className='btn btn-ghost lg:hidden'>
@@ -69,7 +70,7 @@ const NavBar = () => {
         </Link>
       </div>
       <div className='navbar-center hidden lg:flex'>
-        <ul className='menu menu-horizontal px-1'>{navLinks}</ul>
+        <ul id='nav-cen'>{navLinks}</ul>
       </div>
       <div className='navbar-end'>
         <button className='btn btn-ghost btn-circle'>
