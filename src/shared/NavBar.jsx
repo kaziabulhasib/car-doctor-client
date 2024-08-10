@@ -1,10 +1,18 @@
 import { useContext } from "react";
 import logo from "../assets/logo.svg";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import "./navbar.css";
+import toast from "react-hot-toast";
 const NavBar = () => {
   const { logout, user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    toast.success("Logout Sucessfull");
+    navigate("/signup");
+  };
   const navLinks = (
     <>
       <li className='nav-link'>
@@ -26,7 +34,9 @@ const NavBar = () => {
 
       {user ? (
         <li className='nav-link'>
-          <button onClick={() => logout()}>Logout</button>
+          <button onClick={handleLogout} t>
+            Logout
+          </button>
         </li>
       ) : (
         <>

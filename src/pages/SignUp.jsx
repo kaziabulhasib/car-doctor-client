@@ -3,6 +3,7 @@ import logo from "../assets/logo.svg";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
+import toast from "react-hot-toast";
 const SignUp = () => {
   const navigate = useNavigate();
   const { createUser, signinWithGoogle } = useContext(AuthContext);
@@ -28,12 +29,18 @@ const SignUp = () => {
   // google login
 
   const handleGoogleLogin = () => {
-    signinWithGoogle().then((res) => {
-      console.log(res.user.displayName);
-    });
+    signinWithGoogle()
+      .then((res) => {
+        console.log(res.user.displayName);
+        navigate("/");
+        toast.success("Google Login");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
-    <div>
+    <div className='my-24'>
       <header className='bg-gray-700 max-w-7xl lg:px-24 py-6  '>
         <div className='container px-6 mx-auto'>
           <nav className='flex flex-col py-24 sm:flex-row sm:justify-between sm:items-center'>
