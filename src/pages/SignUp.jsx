@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
 const SignUp = () => {
-  const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { createUser, signinWithGoogle } = useContext(AuthContext);
   const handleSignUP = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -18,8 +20,17 @@ const SignUp = () => {
         const user = result.user;
         console.log(user);
         form.reset();
+        navigate("/");
       })
       .catch((error) => console.log(error));
+  };
+
+  // google login
+
+  const handleGoogleLogin = () => {
+    signinWithGoogle().then((res) => {
+      console.log(res.user.displayName);
+    });
   };
   return (
     <div>
@@ -90,18 +101,20 @@ const SignUp = () => {
                     />
                   </div>
 
-                  <div className='flex items-center justify-between mt-4'>
-                    <a
-                      href='#'
-                      className='text-sm text-gray-600 dark:text-gray-200 hover:underline'>
-                      Forget Password?
-                    </a>
-
+                  <div className='flex items-center justify-between my-4'>
                     <button className='px-6 py-2 font-medium text-white transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-800 dark:focus:bg-gray-700'>
                       Sign Up
                     </button>
                   </div>
                 </form>
+                <div>
+                  <h1>-------------Or log in with google-------------</h1>
+                  <div
+                    onClick={handleGoogleLogin}
+                    className='text-3xl px-6 py-4 border inline-block my-6 hover:bg-base-200 cursor-pointer'>
+                    <FcGoogle />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
