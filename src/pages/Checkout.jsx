@@ -1,23 +1,26 @@
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Checkout = () => {
   const service = useLoaderData();
-  const { title, _id, price, description, service_id } = service;
+  const { title, _id, price, description, img } = service;
+  const { user } = useContext(AuthContext);
 
   const handleCheckout = (e) => {
     e.preventDefault();
     const form = e.target;
-    // const serviceName = form.serviceName.value;
-    // const serviceType = form.serviceType.value;
-    // const servicePrice = form.servicePrice.value;
-    // const serviceFacility = form.serviceFacility.value;
-    // const serviceDetails = form.serviceDetails.value;
+    const serviceName = form.serviceName.value;
+    const servicePrice = form.servicePrice.value;
+    const serviceDate = form.date.value;
+    const serviceDetails = form.serviceDetails.value;
+
     const serviceData = {
-      title,
-      price,
-      description,
-      service_id,
-      _id,
+      serviceName,
+      servicePrice,
+      serviceDetails,
+      serviceDate,
+      img,
     };
     console.log(serviceData);
     form.reset();
@@ -38,10 +41,9 @@ const Checkout = () => {
             defaultValue={title}
           />
           <input
-            defaultValue={service_id}
             className='block w-full px-4 py-2 mt-4 text-gray-700 placeholder-gray-400 bg-white border rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-500 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:ring-blue-300 focus:outline-none focus:ring'
-            name='serviceId'
-            type='text'
+            name='date'
+            type='date'
             placeholder='Service Type'
           />
         </div>
@@ -55,11 +57,10 @@ const Checkout = () => {
             defaultValue={price}
           />
           <input
-            defaultValue={_id}
+            defaultValue={user?.email}
             className='block w-full px-4 py-2 mt-4 text-gray-700 placeholder-gray-400 bg-white border rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-500 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:ring-blue-300 focus:outline-none focus:ring'
-            name='serviceFacility'
-            type='text'
-            placeholder='Service Facility'
+            name='userEmail'
+            type='email'
           />
         </div>
         {/* text Area  */}

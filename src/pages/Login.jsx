@@ -22,7 +22,7 @@ const Login = () => {
   };
   return (
     <div>
-      <header className='bg-gray-700 max-w-7xl lg:px-24 py-6  '>
+      <header className='bg-gray-700 max-w-7xl lg:px-24 py-6 lg:my-36  '>
         <div className='container px-6 mx-auto'>
           <nav className='flex flex-col py-24 sm:flex-row sm:justify-between sm:items-center'>
             <a href='#'>

@@ -31,7 +31,7 @@ const SignUp = () => {
   const handleGoogleLogin = () => {
     signinWithGoogle()
       .then((res) => {
-        console.log(res.user.displayName);
+        console.log(res.user);
         navigate("/");
         toast.success("Google Login");
       })
