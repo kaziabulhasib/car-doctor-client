@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import toast from "react-hot-toast";
+
+import Swal from "sweetalert2";
 // import { AuthContext } from "../providers/AuthProvider";
 const Bookings = () => {
   const { user } = useContext(AuthContext);
@@ -15,24 +17,36 @@ const Bookings = () => {
   //   handle delete
 
   const handleDelete = (id) => {
-    console.log(id);
-
-    const proceed = confirm("are you sure to proceed");
-
-    if (proceed) {
-      fetch(`http://localhost:5000/bookings/${id}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          if (data.deletedCount > 0) {
-            toast.success("deleted");
-            const remaining = bookings.filter((booking) => booking._id !== id);
-            setBookings(remaining);
-          }
-        });
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/bookings/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Bookings has been cancelled.",
+                icon: "success",
+              });
+              const remaining = bookings.filter(
+                (booking) => booking._id !== id
+              );
+              setBookings(remaining);
+            }
+          });
+      }
+    });
   };
   return (
     <div className='my-24'>
