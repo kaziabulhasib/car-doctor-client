@@ -6,6 +6,7 @@ import SignUp from "../pages/SignUp";
 import Checkout from "../pages/Checkout";
 import Error from "../components/Error/Error";
 import About from "../components/About";
+import Bookings from "../pages/bookings/Bookings";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
         element: <Checkout />,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/services/${params.id}`),
+      },
+      {
+        path: "/bookings",
+        element: <Bookings />,
       },
     ],
   },

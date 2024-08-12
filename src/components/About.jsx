@@ -1,7 +1,7 @@
 const About = () => {
   return (
-    <div>
-      <h1>This is about page</h1>
+    <div className='my-24'>
+      <h1>About page</h1>
     </div>
   );
 };
