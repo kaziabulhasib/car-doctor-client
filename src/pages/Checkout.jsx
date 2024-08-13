@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
 
@@ -7,7 +7,7 @@ const Checkout = () => {
   const service = useLoaderData();
   const { title, _id, price, description, img } = service;
   const { user } = useContext(AuthContext);
-
+  const navigate = useNavigate();
   const handleCheckout = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -34,6 +34,7 @@ const Checkout = () => {
       .then((data) => {
         if (data.insertedId) {
           toast.success("Booking  sucessfully");
+          navigate("/bookings");
         }
       });
   };

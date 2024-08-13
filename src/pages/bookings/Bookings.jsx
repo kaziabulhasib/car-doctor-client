@@ -104,7 +104,7 @@ const Bookings = () => {
                   </div>
                 </td>
                 <td>{booking.serviceDate}</td>
-                <td>{booking._id}</td>
+                <td>{booking.servicePrice}</td>
                 <th>
                   <button className='btn btn-ghost btn-xs'>details</button>
                 </th>
