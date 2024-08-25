@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
@@ -6,6 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
 const SignUp = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { createUser, signinWithGoogle } = useContext(AuthContext);
   const handleSignUP = (e) => {
     e.preventDefault();
@@ -13,8 +14,8 @@ const SignUp = () => {
     // const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const image = form.image.files[0].name;
-    const user = { name, email, password, image };
+    // const image = form.image.files[0].name;
+    const user = { name, email, password };
     console.log(user);
     //
     createUser(email, password)
@@ -22,7 +23,7 @@ const SignUp = () => {
         const user = result.user;
         console.log(user);
         form.reset();
-        navigate("/");
+        navigate(location.state ? location.state : "/");
       })
       .catch((error) => console.log(error));
   };
@@ -33,7 +34,7 @@ const SignUp = () => {
     signinWithGoogle()
       .then((res) => {
         console.log(res.user);
-        navigate("/");
+        navigate(location.state ? location.state : "/");
         toast.success("Google Login");
       })
       .catch((error) => {
