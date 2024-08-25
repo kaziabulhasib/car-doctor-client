@@ -125,11 +125,15 @@ const Bookings = () => {
                 <td>{booking.serviceDate}</td>
                 <td>{booking.servicePrice}</td>
                 <th>
-                  <button
-                    onClick={() => handleConfirm(booking?._id)}
-                    className='btn btn-ghost btn-xs'>
-                    Confirm
-                  </button>
+                  {booking.status === "confirm" ? (
+                    <span className='bold text-red-500'>confirmed</span>
+                  ) : (
+                    <button
+                      onClick={() => handleConfirm(booking?._id)}
+                      className='btn btn-ghost btn-xs'>
+                      Confirm
+                    </button>
+                  )}
                 </th>
               </tr>
             ))}
