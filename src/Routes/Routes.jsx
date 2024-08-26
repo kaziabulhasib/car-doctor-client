@@ -8,6 +8,7 @@ import Error from "../components/Error/Error";
 import About from "../components/About";
 import Bookings from "../pages/bookings/Bookings";
 import PrivateRoute from "./PrivateRoute";
+import ServiceDetails from "../components/ServiceDetails";
 
 const router = createBrowserRouter([
   {
@@ -35,10 +36,15 @@ const router = createBrowserRouter([
         path: "/checkout/:id",
         element: (
           <PrivateRoute>
-            {" "}
             <Checkout />
           </PrivateRoute>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/services/${params.id}`),
+      },
+      {
+        path: "/details/:id",
+        element: <ServiceDetails />,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/services/${params.id}`),
       },

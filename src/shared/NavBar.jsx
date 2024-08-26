@@ -23,9 +23,11 @@ const NavBar = () => {
         <NavLink to='/about'>About</NavLink>
       </li>
 
-      <li className='nav-link'>
-        <NavLink to='/bookings'>MY Bookings</NavLink>
-      </li>
+      {user && (
+        <li className='nav-link'>
+          <NavLink to='/bookings'>MY Bookings</NavLink>
+        </li>
+      )}
     </>
   );
   return (

@@ -9,9 +9,15 @@ const ServiceCard = ({ data }) => {
       <div className='card-body'>
         <h2 className='text-xl font-medium'>{title}</h2>
         <p>Price: {price}</p>
-        <Link to={`/checkout/${_id}`}>
-          <button className='btn btn-sm '>Book Now</button>
-        </Link>
+        <div className='flex justify-between'>
+          {" "}
+          <Link to={`/checkout/${_id}`}>
+            <button className='btn btn-sm '>Book Now</button>
+          </Link>
+          <Link to={`/details/${_id}`}>
+            <button className='btn btn-sm '>See Details</button>
+          </Link>
+        </div>
       </div>
     </div>
   );
